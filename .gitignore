@@ -10,6 +10,7 @@
 *.tfstate.backup
 
 terraform.tfvars
+terraform.tfvars.json
 *.auto.tfvars
 
 .terraform/
