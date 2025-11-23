@@ -17,7 +17,8 @@ resource "google_project_service" "project_apis" {
     "secretmanager.googleapis.com",     # Secret Manager API
     "eventarc.googleapis.com",          # Eventarc API
     "redis.googleapis.com",             # Memorystore for Redis API
-    "clouddeploy.googleapis.com"        # Cloud Deploy API
+    "clouddeploy.googleapis.com",       # Cloud Deploy API
+    "cloudresourcemanager.googleapis.com" #Clour Resource Manager API
   ])
 
   project                    = var.project_id
