@@ -1,7 +1,8 @@
 # Define substitution variables for better control and version management.
 substitutions:
   _TF_VERSION: '1.13.5' # Specific Terraform version for plan and apply steps.
-
+options:
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
 steps:
   
   # --- Step 1: Initialize Terraform ---
