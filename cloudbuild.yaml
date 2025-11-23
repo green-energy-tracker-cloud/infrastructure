@@ -28,15 +28,21 @@ steps:
     args: ['init']
     waitFor: ['Inject Secrets']
     dir: './environments/prod'
+    secretEnv: ['_TF_VARS']
 
   # --- Step 2: Generate Execution Plan ---
   # 'plan' inspects the current state, compares it with the configuration, 
   # and saves the proposed changes to the 'tfplan' file.
   - id: 'Plan'
     name: 'hashicorp/terraform:${_TF_VERSION}'
-    args: ['plan', '-out=tfplan']
-    waitFor: ['Init']
+    args: [
+      'plan',
+      '-var-file=variables.tfvars.json',
+      '-out=tfplan'
+    ]
     dir: './environments/prod'
+    waitFor: [ 'Init' ]
+    secretEnv: [ '_TF_VARS' ]
 
   # --- Step 3: Apply the Changes ---
   # 'apply' executes the changes defined in the 'tfplan' file against the infrastructure.
