@@ -1,0 +1,29 @@
+# Define substitution variables for better control and version management.
+substitutions:
+  _TF_VERSION: '1.13.5' # Specific Terraform version for plan and apply steps.
+
+steps:
+  
+  # --- Step 1: Initialize Terraform ---
+  # 'init' prepares the working directory, downloads providers, and configures the backend state.
+  - id: 'Init'
+    name: 'hashicorp/terraform:${_TF_VERSION}'
+    args: ['init']
+    dir: './environments/prod'
+
+  # --- Step 2: Generate Execution Plan ---
+  # 'plan' inspects the current state, compares it with the configuration, 
+  # and saves the proposed changes to the 'tfplan' file.
+  - id: 'Plan'
+    name: 'hashicorp/terraform:${_TF_VERSION}'
+    args: ['plan', '-out=tfplan']
+    waitFor: ['Init']
+    dir: './environments/prod'
+
+  # --- Step 3: Apply the Changes ---
+  # 'apply' executes the changes defined in the 'tfplan' file against the infrastructure.
+  - id: 'Apply'
+    name: 'hashicorp/terraform:${_TF_VERSION}'
+    args: ['apply', 'tfplan']
+    waitFor: ['Plan']
+    dir: './environments/prod'
