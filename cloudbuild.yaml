@@ -6,7 +6,8 @@ options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
 
 availableSecrets:
-  - secretManager:
+  tf_prod_vars_secret:
+    secretManager:
       secretUrl: projects/${_PROJECT_ID}/secrets/terraform-prod-vars/versions/latest
     env: '_TF_VARS'
 
