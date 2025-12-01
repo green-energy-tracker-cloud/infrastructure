@@ -9,10 +9,10 @@ resource "google_clouddeploy_delivery_pipeline" "primary" {
   serial_pipeline {
 
     # 1. STAGE: Deployment su Staging
-    stages {
-      target_id = "staging-target"
-      profiles  = ["staging-profile"]
-    }
+    //stages {
+    //  target_id = "staging-target"
+    //  profiles  = ["staging-profile"]
+    //}
 
     # 2. STAGE: Performance Test (Load, Spike, Regression)
     #
