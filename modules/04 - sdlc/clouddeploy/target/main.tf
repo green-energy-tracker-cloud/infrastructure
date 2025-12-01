@@ -38,5 +38,7 @@ resource "google_clouddeploy_target" "primary_cloudrun_target" {
 
     # Specifies the maximum time allowed for the execution of the deploy or render operation.
     execution_timeout = "3600s" # 1 hour
+
+    service_account = each.value.service_account
   }
 }

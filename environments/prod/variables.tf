@@ -163,6 +163,7 @@ variable "cd_targets" {
     location = string
     location_run = string
     require_approval = bool
+    service_account = string
   }))
 }
 variable "cd-pipeline-name" {
