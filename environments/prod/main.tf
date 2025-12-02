@@ -26,12 +26,6 @@ provider "google" {
 ## --------------------------------------------------------
 
 ## -------------- 02 - services ---------------------------
-  # App Engine
-  module "app-engine" {
-    source = "../../modules/02 - services/appengine"
-    project_id = var.project_id
-    region = var.region
-  }
   # Pub/Sub Management
     #Topics
     module "topics" {
