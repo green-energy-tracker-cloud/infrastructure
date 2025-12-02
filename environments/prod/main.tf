@@ -26,6 +26,12 @@ provider "google" {
 ## --------------------------------------------------------
 
 ## -------------- 02 - services ---------------------------
+  # App Engine
+  module "app-engine" {
+    source = "../../modules/02 - services/appengine"
+    project_id = var.project_id
+    region = var.region
+  }
   # Pub/Sub Management
     #Topics
     module "topics" {
@@ -71,12 +77,6 @@ provider "google" {
   module "memory-store" {
     source = "../../modules/03 - storage/memorystore"
     region = var.region
-  }
-
-  #Cloud Storage Bucket
-  module "cloud-storage-bucket" {
-    source = "../../modules/03 - storage/cloudstorage"
-    buckets = var.buckets
   }
 
   //#Bigtable Instance
