@@ -16,7 +16,7 @@ resource "google_cloudbuild_trigger" "ci_trigger_green_energy" {
 
   # The name of the Cloud Build configuration file (e.g., 'cloudbuild.yaml')
   # located within the repository, which defines the CI steps.
-  filename = each.value.ci_config_file
+  filename = try(each.value.remote_template, null) == null ? try(each.value.ci_config_file, "cloudbuild.yaml") : null
 
   # The regional location where the Cloud Build job will execute (e.g., 'us-central1').
   location = each.value.location
@@ -37,4 +37,14 @@ resource "google_cloudbuild_trigger" "ci_trigger_green_energy" {
       branch = each.value.branch
     }
   }
+  dynamic "git_file_source" {
+    for_each = try(each.value.remote_template, null) != null ? [1] : []
+    content {
+      path      = each.value.remote_template.filename
+      uri       = each.value.remote_template.repository
+      revision  = "refs/heads/${each.value.remote_template.branch}"
+      repo_type = "GITHUB"
+    }
+  }
+  substitutions = try(each.value.substitutions, {})
 }

@@ -123,6 +123,15 @@ variable "cloudbuild_triggers" {
     ci_config_file = string
     repository = string
     branch = string
+    remote_template = list(object({
+      repository = string
+      filename = string
+      branch = string
+    }))
+    substitutions = list(object({
+      _IMAGE_NAME = string
+      _SERVICE_NAME = string
+    }))
   }))
 }
 
