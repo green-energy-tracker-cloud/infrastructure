@@ -72,11 +72,7 @@ provider "google" {
     source = "../../modules/03 - storage/memorystore"
     region = var.region
   }
-  #Cloud Storage Bucket
-  module "cloude-storage-bucket" {
-    source = "../../modules/03 - storage/cloudstorage"
-    buckets = var.buckets
-  }
+
   //#Bigtable Instance
   //module "bigtable" {
   //  source = "../../modules/03 - storage/bigtable"
