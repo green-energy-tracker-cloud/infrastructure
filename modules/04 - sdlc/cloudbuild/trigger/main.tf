@@ -43,7 +43,7 @@ resource "google_cloudbuild_trigger" "ci_trigger_green_energy" {
       path      = each.value.remote_template.filename
       uri       = each.value.remote_template.repository
       revision  = "refs/heads/${each.value.remote_template.branch}"
-      repo_type = "GITHUB"
+      repo_type = "UNKNOWN"
     }
   }
   substitutions = try(each.value.substitutions, {})
