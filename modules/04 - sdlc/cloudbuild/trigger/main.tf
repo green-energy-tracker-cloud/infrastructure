@@ -40,9 +40,9 @@ resource "google_cloudbuild_trigger" "ci_trigger_green_energy" {
   dynamic "git_file_source" {
     for_each = each.value.remote_template != null ? [1] : []
     content {
-      path      = each.value.remote_template.filename
-      uri       = each.value.remote_template.repository
-      revision  = "refs/heads/${each.value.remote_template.branch}"
+      path = each.value.remote_template.filename
+      repository = each.value.remote_template.repository
+      revision = "refs/heads/${each.value.remote_template.branch}"
       repo_type = "UNKNOWN"
     }
   }
