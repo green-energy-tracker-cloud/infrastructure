@@ -1,7 +1,7 @@
 resource "google_clouddeploy_delivery_pipeline" "primary" {
   location    = "us-east1"
-  name        = "pipeline"
-  description = "Pipeline con performance test e rollout Canary"
+  name        = "delivery-pipeline"
+  description = "Pipeline with performance tests and Canary rollout"
   project     = "green-energy-tracker-cloud"
   provider    = google-beta
 

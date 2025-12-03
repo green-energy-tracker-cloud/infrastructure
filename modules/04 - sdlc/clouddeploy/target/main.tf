@@ -34,7 +34,7 @@ resource "google_clouddeploy_target" "primary_cloudrun_target" {
   execution_configs {
     # Defines which types of operations this configuration applies to:
     # "RENDER" (for rendering manifests) and "DEPLOY" (for applying manifests).
-    usages = ["RENDER", "DEPLOY"]
+    usages = ["RENDER", "DEPLOY", "VERIFY", "PREDEPLOY", "POSTDEPLOY"]
 
     # Specifies the maximum time allowed for the execution of the deploy or render operation.
     execution_timeout = "3600s" # 1 hour
