@@ -128,10 +128,7 @@ variable "cloudbuild_triggers" {
       filename = string
       branch = string
     }))
-    substitutions = list(object({
-      _IMAGE_NAME = string
-      _SERVICE_NAME = string
-    }))
+    substitutions = optional(map(string), {})
   }))
 }
 
