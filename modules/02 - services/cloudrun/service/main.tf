@@ -30,4 +30,15 @@ resource "google_cloud_run_v2_service" "processor_service" {
     }
   }
   deletion_protection = false
+
+  lifecycle {
+    ignore_changes = [
+      client,
+      client_version,
+      traffic,
+      template[0].containers[0].image,
+      template[0].labels,
+      template[0].annotations
+    ]
+  }
 }
