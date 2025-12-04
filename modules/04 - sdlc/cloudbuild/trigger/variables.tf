@@ -9,11 +9,6 @@ variable "triggers" {
     ci_config_file = string
     repository = string
     branch = string
-    remote_template = optional(object({
-      repository = string
-      filename = string
-      branch = string
-    }))
     substitutions = optional(map(string), {})
   }))
 }
