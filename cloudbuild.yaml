@@ -1,7 +1,7 @@
 # Define substitution variables for better control and version management.
 substitutions:
   _TF_VERSION: '1.13.5' # Specific Terraform version for plan and apply steps.
-  _PROJECT_ID: "green-energy-tracker-cloud"
+  _PROJECT_ID: "green-energy-tracker-cloud-v2"
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
 
