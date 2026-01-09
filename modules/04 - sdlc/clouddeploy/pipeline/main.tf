@@ -2,7 +2,7 @@ resource "google_clouddeploy_delivery_pipeline" "primary" {
   location    = "us-east1"
   name        = "delivery-pipeline"
   description = "Pipeline with performance tests and Canary rollout"
-  project     = "reference-lens-482009-j5"
+  project     = "green-energy-tracker-cloud-v3"
   provider    = google-beta
 
   # --- Serial Pipeline ---
